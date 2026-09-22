@@ -1,0 +1,13 @@
+# Godot 4+ specific ignores
+.godot/
+/android/
+*.tmp
+/addons
+steam_appid.txt
+
+# Custom ignores
+/Resources/Runtime
+/builds/
+/_DEBUG/
+.obsidian/
+Obsidian/ExternalDocs
