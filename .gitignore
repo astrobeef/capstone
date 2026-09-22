@@ -4,6 +4,7 @@
 *.tmp
 /addons
 steam_appid.txt
+.vscode/
 
 # Custom ignores
 /Resources/Runtime
