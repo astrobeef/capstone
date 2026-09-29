@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://gu1sv4y2gaj0"]
+[gd_scene load_steps=4 format=3 uid="uid://gu1sv4y2gaj0"]
 
 [ext_resource type="Script" path="res://display_hello_on_button.gd" id="1_s54q2"]
+[ext_resource type="PackedScene" uid="uid://ce70majewi2pb" path="res://hello_world_text.tscn" id="2_dq1ee"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5lynf"]
 bg_color = Color(0.942887, 0.41249, 0.296202, 1)
@@ -49,26 +50,18 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_5lynf")
 layout_mode = 2
 size_flags_horizontal = 6
 script = ExtResource("1_s54q2")
-rich_text_label_c = NodePath("../../PanelContainer2/RichTextLabel")
+rich_text_label_c = NodePath("")
 
-[node name="PanelContainer2" type="PanelContainer" parent="PanelContainer/MarginContainer/PanelContainer/HBoxContainer"]
-custom_minimum_size = Vector2(120, 40)
+[node name="PanelContainer2" parent="PanelContainer/MarginContainer/PanelContainer/HBoxContainer" instance=ExtResource("2_dq1ee")]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_styles/panel = SubResource("StyleBoxFlat_5lynf")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/MarginContainer/PanelContainer/HBoxContainer/PanelContainer2"]
-clip_contents = false
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-text = "Hello, world!"
-fit_content = true
-autowrap_mode = 0
+[node name="RichTextLabel" parent="PanelContainer/MarginContainer/PanelContainer/HBoxContainer/PanelContainer2" index="0"]
+text = "goodbye"
 
 [node name="Control2" type="Control" parent="PanelContainer/MarginContainer/PanelContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
 [connection signal="toggled" from="PanelContainer/MarginContainer/PanelContainer/HBoxContainer/PanelContainer/CheckButton" to="PanelContainer/MarginContainer/PanelContainer/HBoxContainer/PanelContainer/CheckButton" method="_on_toggled_editor"]
+
+[editable path="PanelContainer/MarginContainer/PanelContainer/HBoxContainer/PanelContainer2"]

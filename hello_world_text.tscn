@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://ce70majewi2pb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5lynf"]
+bg_color = Color(0.942887, 0.41249, 0.296202, 1)
+
+[node name="PanelContainer2" type="PanelContainer"]
+custom_minimum_size = Vector2(120, 40)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_5lynf")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+clip_contents = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Hello, world!"
+fit_content = true
+autowrap_mode = 0
