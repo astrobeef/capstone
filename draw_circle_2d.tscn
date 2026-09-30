@@ -15,17 +15,17 @@ script = ExtResource("1_lwpvn")
 radius = 32.0
 stroke_width = 4.0
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="SelectableArea2D" type="Area2D" parent="." groups=["SelectableArea2D"]]
 script = ExtResource("2_kuw2u")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SelectableArea2D"]
 shape = SubResource("CircleShape2D_nvvg1")
 
-[node name="SetShapeOnRadiusChange" type="Node" parent="Area2D/CollisionShape2D"]
+[node name="SetShapeOnRadiusChange" type="Node" parent="SelectableArea2D/CollisionShape2D"]
 script = ExtResource("3_flthw")
 
-[node name="ColorCircleOnSelection" type="Node" parent="Area2D"]
+[node name="ColorCircleOnSelection" type="Node" parent="SelectableArea2D"]
 script = ExtResource("4_vjhp6")
 
-[node name="DragOwnerDuringSelection" type="Node" parent="Area2D"]
+[node name="DragOwnerDuringSelection" type="Node2D" parent="SelectableArea2D"]
 script = ExtResource("5_pqcri")
