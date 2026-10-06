@@ -1,13 +1,28 @@
-[gd_scene load_steps=5 format=3 uid="uid://dfy8h7u3jcltk"]
+[gd_scene load_steps=8 format=3 uid="uid://dfy8h7u3jcltk"]
 
 [ext_resource type="Script" path="res://transition_table_gui.gd" id="1_ale4f"]
 [ext_resource type="Script" path="res://transition_table_resource.gd" id="2_q0gyi"]
 [ext_resource type="Script" path="res://transition_row_resource.gd" id="3_6scyh"]
 
-[sub_resource type="Resource" id="Resource_nudb0"]
+[sub_resource type="Resource" id="Resource_hfseo"]
+script = ExtResource("3_6scyh")
+state = "A"
+row = Array[String](["A", "B"])
+
+[sub_resource type="Resource" id="Resource_hntgq"]
+script = ExtResource("3_6scyh")
+state = "B"
+row = Array[String](["C", "B"])
+
+[sub_resource type="Resource" id="Resource_b8dm1"]
+script = ExtResource("3_6scyh")
+state = "C"
+row = Array[String](["B", "B"])
+
+[sub_resource type="Resource" id="Resource_amvsx"]
 script = ExtResource("2_q0gyi")
-inputs = Array[String]([])
-rows = Array[ExtResource("3_6scyh")]([])
+inputs = Array[String](["0", "1"])
+rows = Array[ExtResource("3_6scyh")]([SubResource("Resource_hfseo"), SubResource("Resource_hntgq"), SubResource("Resource_b8dm1")])
 
 [node name="TransitionTableGUI" type="Control"]
 layout_mode = 3
@@ -17,4 +32,4 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ale4f")
-table = SubResource("Resource_nudb0")
+table = SubResource("Resource_amvsx")

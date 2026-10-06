@@ -1,3 +1,4 @@
+@tool
 extends Resource
 class_name TTableRes
 
@@ -10,10 +11,11 @@ var states: Array[String]:
 	get():
 		var r_states: Array[String]
 		for r in rows:
-			r_states.append(r.state)
+			if r != null:
+				r_states.append(r.state)
 		return r_states
 
-func _init(p_inputs: Array[String], p_rows: Array[TRowRes]) -> void:
+func _init(p_inputs: Array[String] = [], p_rows: Array[TRowRes] = []) -> void:
 	rows = p_rows
 	inputs = p_inputs
 

@@ -9,9 +9,10 @@ var table: TTableRes
 ## B || C | B
 ## C || B | B
 
-func _init() -> void:
-	var inputs: Array[String] = ["0", "1"]
-	table = TTableRes.new(inputs, [TRowRes.new("A", ["A", "B"]), TRowRes.new("B", ["C", "B"]), TRowRes.new("C", ["B", "B"])])
+func _ready() -> void:
+	if table == null:
+		return
 	table.print_inputs()
 	for r in table.rows:
-		r.print_transitions()
+		if r != null:
+			r.print_transitions()

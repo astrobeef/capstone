@@ -1,3 +1,4 @@
+@tool
 extends Resource
 class_name TRowRes
 
@@ -6,7 +7,7 @@ var state: String
 @export
 var row: Array[String]
 
-func _init(p_state: String, p_row: Array[String]) -> void:
+func _init(p_state: String = "", p_row: Array[String] = []) -> void:
 	state = p_state
 	row = p_row
 
