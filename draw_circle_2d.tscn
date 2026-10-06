@@ -1,14 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://ca7ax1wjni78s"]
+[gd_scene load_steps=7 format=3 uid="uid://ca7ax1wjni78s"]
 
 [ext_resource type="Script" path="res://draw_circle_2d.gd" id="1_lwpvn"]
 [ext_resource type="Script" path="res://selectable_area_2d.gd" id="2_kuw2u"]
 [ext_resource type="Script" path="res://set_shape_on_radius_change.gd" id="3_flthw"]
 [ext_resource type="Script" path="res://color_circle_on_selection.gd" id="4_vjhp6"]
 [ext_resource type="Script" path="res://drag_owner_during_selection.gd" id="5_pqcri"]
-[ext_resource type="Script" path="res://draw_transition.gd" id="6_efxpr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nvvg1"]
-radius = 34.0
+radius = 33.0
 
 [node name="DrawCircle2D" type="Node2D"]
 position = Vector2(396, 158)
@@ -30,6 +29,3 @@ script = ExtResource("4_vjhp6")
 
 [node name="DragOwnerDuringSelection" type="Node2D" parent="SelectableArea2D"]
 script = ExtResource("5_pqcri")
-
-[node name="DrawTransition" type="Node2D" parent="."]
-script = ExtResource("6_efxpr")

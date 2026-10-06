@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://cr1v6d2na1rhf"]
+
+[ext_resource type="Script" path="res://state_2d.gd" id="1_y8etl"]
+[ext_resource type="Script" path="res://draw_circle_2d.gd" id="1_ys5ni"]
+[ext_resource type="PackedScene" uid="uid://ca7ax1wjni78s" path="res://draw_circle_2d.tscn" id="2_uu07u"]
+
+[node name="State2D" type="Node2D"]
+script = ExtResource("1_y8etl")
+condition_type = 1
+
+[node name="DrawCircle2D-Accept" type="Node2D" parent="."]
+visible = false
+script = ExtResource("1_ys5ni")
+radius = 38.0
+stroke_width = 2.0
+
+[node name="DrawCircle2D" parent="." instance=ExtResource("2_uu07u")]
+position = Vector2(0, 0)
+stroke_width = 2.0
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "a"
+horizontal_alignment = 1
+vertical_alignment = 1
