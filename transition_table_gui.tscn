@@ -1,28 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://dfy8h7u3jcltk"]
+[gd_scene load_steps=3 format=3 uid="uid://dfy8h7u3jcltk"]
 
 [ext_resource type="Script" path="res://transition_table_gui.gd" id="1_ale4f"]
-[ext_resource type="Script" path="res://transition_table_resource.gd" id="2_q0gyi"]
-[ext_resource type="Script" path="res://transition_row_resource.gd" id="3_6scyh"]
-
-[sub_resource type="Resource" id="Resource_hfseo"]
-script = ExtResource("3_6scyh")
-state = "A"
-row = Array[String](["A", "B"])
-
-[sub_resource type="Resource" id="Resource_hntgq"]
-script = ExtResource("3_6scyh")
-state = "B"
-row = Array[String](["C", "B"])
-
-[sub_resource type="Resource" id="Resource_b8dm1"]
-script = ExtResource("3_6scyh")
-state = "C"
-row = Array[String](["B", "B"])
-
-[sub_resource type="Resource" id="Resource_amvsx"]
-script = ExtResource("2_q0gyi")
-inputs = Array[String](["0", "1"])
-rows = Array[ExtResource("3_6scyh")]([SubResource("Resource_hfseo"), SubResource("Resource_hntgq"), SubResource("Resource_b8dm1")])
+[ext_resource type="Resource" uid="uid://cjmtjrbi2a713" path="res://Resources/example_table.tres" id="2_jkpch"]
 
 [node name="TransitionTableGUI" type="Control"]
 layout_mode = 3
@@ -32,4 +11,93 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ale4f")
-table = SubResource("Resource_amvsx")
+table = ExtResource("2_jkpch")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="GeneratedTable" type="GridContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+columns = 3
+
+[node name="HeaderState" type="Label" parent="PanelContainer/MarginContainer/GeneratedTable"]
+custom_minimum_size = Vector2(80, 28)
+layout_mode = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HeaderInput_0" type="Label" parent="PanelContainer/MarginContainer/GeneratedTable"]
+custom_minimum_size = Vector2(80, 28)
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HeaderInput_1" type="Label" parent="PanelContainer/MarginContainer/GeneratedTable"]
+custom_minimum_size = Vector2(80, 28)
+layout_mode = 2
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="State_0" type="Label" parent="PanelContainer/MarginContainer/GeneratedTable"]
+custom_minimum_size = Vector2(80, 28)
+layout_mode = 2
+text = "A"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Transition_0_0" type="LineEdit" parent="PanelContainer/MarginContainer/GeneratedTable"]
+custom_minimum_size = Vector2(80, 28)
+layout_mode = 2
+text = "A"
+alignment = 1
+
+[node name="Transition_0_1" type="LineEdit" parent="PanelContainer/MarginContainer/GeneratedTable"]
+custom_minimum_size = Vector2(80, 28)
+layout_mode = 2
+text = "B"
+alignment = 1
+
+[node name="State_1" type="Label" parent="PanelContainer/MarginContainer/GeneratedTable"]
+custom_minimum_size = Vector2(80, 28)
+layout_mode = 2
+text = "B"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Transition_1_0" type="LineEdit" parent="PanelContainer/MarginContainer/GeneratedTable"]
+custom_minimum_size = Vector2(80, 28)
+layout_mode = 2
+text = "C"
+alignment = 1
+
+[node name="Transition_1_1" type="LineEdit" parent="PanelContainer/MarginContainer/GeneratedTable"]
+custom_minimum_size = Vector2(80, 28)
+layout_mode = 2
+text = "B"
+alignment = 1
+
+[node name="State_2" type="Label" parent="PanelContainer/MarginContainer/GeneratedTable"]
+custom_minimum_size = Vector2(80, 28)
+layout_mode = 2
+text = "C"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Transition_2_0" type="LineEdit" parent="PanelContainer/MarginContainer/GeneratedTable"]
+custom_minimum_size = Vector2(80, 28)
+layout_mode = 2
+text = "B"
+alignment = 1
+
+[node name="Transition_2_1" type="LineEdit" parent="PanelContainer/MarginContainer/GeneratedTable"]
+custom_minimum_size = Vector2(80, 28)
+layout_mode = 2
+text = "B"
+alignment = 1

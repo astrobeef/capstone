@@ -3,6 +3,10 @@ extends Resource
 class_name TTableRes
 
 @export
+var start_state: String = "A"
+@export
+var accepting_states: Array[String] = []
+@export
 var inputs: Array[String]
 @export
 var rows: Array[TRowRes]
