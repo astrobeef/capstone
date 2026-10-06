@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://csgfh1bg6m5ed"]
+
+[ext_resource type="Script" path="res://automata_2d.gd" id="1_1xosb"]
+[ext_resource type="Resource" uid="uid://cjmtjrbi2a713" path="res://Resources/example_table.tres" id="2_gbhe2"]
+
+[node name="Automata2D" type="Node2D"]
+script = ExtResource("1_1xosb")
+table = ExtResource("2_gbhe2")
