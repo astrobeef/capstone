@@ -11,7 +11,7 @@ var do_rebuild_table: bool:
 @export
 var table: TTableRes
 
-var grid: GridContainer
+var _grid: GridContainer
 
 var _grid_parent: Node:
 	get():
@@ -23,22 +23,22 @@ func _ready() -> void:
 func rebuild_table() -> void:
 	if not is_inside_tree():
 		return
-	grid = _grid_parent.get_node_or_null("GeneratedTable") as GridContainer
-	if grid != null:
-		for child in grid.get_children():
-			grid.remove_child(child)
+	_grid = _grid_parent.get_node_or_null("GeneratedTable") as GridContainer
+	if _grid != null:
+		for child in _grid.get_children():
+			_grid.remove_child(child)
 			child.queue_free()
 	else:
-		grid = GridContainer.new()
-		grid.name = "GeneratedTable"
-		_grid_parent.add_child(grid)
+		_grid = GridContainer.new()
+		_grid.name = "GeneratedTable"
+		_grid_parent.add_child(_grid)
 	if Engine.is_editor_hint():
-		grid.owner = get_tree().edited_scene_root
+		_grid.owner = get_tree().edited_scene_root
 	if table == null:
-		grid.columns = 1
+		_grid.columns = 1
 		_add_label("No table assigned", "EmptyTable")
 		return
-	grid.columns = table.inputs.size() + 1
+	_grid.columns = table.inputs.size() + 1
 	_add_label("", "HeaderState")
 	for input_index in range(table.inputs.size()):
 		_add_label(
@@ -63,7 +63,7 @@ func _add_label(value: String, node_name: String) -> void:
 	label.custom_minimum_size = Vector2(80, 28)
 	label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
-	grid.add_child(label)
+	_grid.add_child(label)
 	if Engine.is_editor_hint():
 		label.owner = get_tree().edited_scene_root
 
@@ -73,6 +73,6 @@ func _add_line_edit(value: String, node_name: String) -> void:
 	le.text = value
 	le.custom_minimum_size = Vector2(80, 28)
 	le.alignment = HORIZONTAL_ALIGNMENT_CENTER
-	grid.add_child(le)
+	_grid.add_child(le)
 	if Engine.is_editor_hint():
 		le.owner = get_tree().edited_scene_root
