@@ -18,11 +18,16 @@ var _condition_type: CONDITION_TYPE = CONDITION_TYPE.INTER
 @export
 var label_name := "a"
 
+var _label:
+	get():
+		return get_node("DrawCircle2D/Label")
+
 func _enter_tree() -> void:
 	condition_type_changed.connect(_on_type_changed, ConnectFlags.CONNECT_DEFERRED)
 
 func _ready() -> void:
 	_on_type_changed(CONDITION_TYPE.START, CONDITION_TYPE.INTER)
+	_label.text = label_name
 
 func _on_type_changed(_old: CONDITION_TYPE, new: CONDITION_TYPE):
-	self.get_node("DrawCircle2D-Accept").visible = new == CONDITION_TYPE.FINAL
+	self.get_node("DrawCircle2D/DrawCircle2D-Accept").visible = new == CONDITION_TYPE.FINAL

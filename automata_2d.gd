@@ -1,19 +1,25 @@
 extends Node2D
 class_name Automata2D
 
+const STATE_SCENE = preload("res://state_2d.tscn")
+
 @export
 var table: TTableRes
 
 var current_state: String
 
 func _ready() -> void:
+	create_states()
 	reset()
-	print(current_state)
-	step("1")
-	print(current_state)
-	step("0")
-	print(current_state)
-	print(is_accepting())
+
+func create_states() -> void:
+	for index in range(table.rows.size()):
+		var state_row := table.rows[index]
+		var state_node := STATE_SCENE.instantiate() as State2D
+		state_node.name = state_row.state
+		state_node.label_name = state_row.state
+		state_node.position = Vector2(100 + index * 140, 100)
+		add_child(state_node)
 
 func reset() -> void:
 	current_state = table.start_state
