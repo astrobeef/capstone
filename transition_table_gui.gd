@@ -41,10 +41,7 @@ func rebuild_table() -> void:
 	_grid.columns = table.inputs.size() + 1
 	_add_label("", "HeaderState")
 	for input_index in range(table.inputs.size()):
-		_add_label(
-			table.inputs[input_index],
-			"HeaderInput_%d" % input_index
-		)
+		_add_label(table.inputs[input_index],"HeaderInput_%d" % input_index)
 	for state_index in range(table.rows.size()):
 		var state_row := table.rows[state_index]
 		if state_row == null:
