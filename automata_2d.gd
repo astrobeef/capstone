@@ -6,7 +6,7 @@ const STATE_SCENE = preload("res://state_2d.tscn")
 @export
 var table: TTableRes
 
-var current_state: String
+var _current_state: String
 
 func _ready() -> void:
 	create_states()
@@ -22,14 +22,14 @@ func create_states() -> void:
 		add_child(state_node)
 
 func reset() -> void:
-	current_state = table.start_state
+	_current_state = table.start_state
 
 func step(input: String) -> void:
 	var input_index := table.inputs.find(input)
 	for state_row in table.rows:
-		if state_row.state == current_state:
-			current_state = state_row.row[input_index]
+		if state_row.state == _current_state:
+			_current_state = state_row.row[input_index]
 			return
 
 func is_accepting() -> bool:
-	return current_state in table.accepting_states
+	return _current_state in table.accepting_states
