@@ -23,7 +23,8 @@ var _label:
 		return get_node("DrawCircle2D/Label")
 
 func _enter_tree() -> void:
-	condition_type_changed.connect(_on_type_changed, ConnectFlags.CONNECT_DEFERRED)
+	if !condition_type_changed.is_connected(_on_type_changed):
+		condition_type_changed.connect(_on_type_changed, ConnectFlags.CONNECT_DEFERRED)
 
 func _ready() -> void:
 	_on_type_changed(CONDITION_TYPE.START, CONDITION_TYPE.INTER)
