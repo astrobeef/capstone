@@ -18,6 +18,8 @@ func create_states() -> void:
 		var state_node := STATE_SCENE.instantiate() as State2D
 		state_node.name = state_row.state
 		state_node.label_name = state_row.state
+		state_node.is_start = state_row.state == table.start_state
+		state_node.is_accepting = state_row.state in table.accepting_states
 		state_node.position = Vector2(100 + index * 140, 100)
 		add_child(state_node)
 
