@@ -2,33 +2,42 @@
 extends Node2D
 class_name State2D
 
-signal condition_type_changed(old: CONDITION_TYPE, new: CONDITION_TYPE)
-enum CONDITION_TYPE {START = -1, INTER = 0, FINAL = 1}
 @export
-var condition_type: CONDITION_TYPE:
-	get():
-		return _condition_type
-	set(type):
-		if type != _condition_type:
-			condition_type_changed.emit(_condition_type, type)
-			_condition_type = type
-
-var _condition_type: CONDITION_TYPE = CONDITION_TYPE.INTER
+var label_name := "a":
+	set(value):
+		label_name = value
+		_refreshVisuals()
 
 @export
-var label_name := "a"
+var is_start := false:
+	set(value):
+		is_start = value
+		_refreshVisuals()
 
-var _label:
-	get():
-		return get_node("DrawCircle2D/Label")
+@export
+var is_accepting := false:
+	set(value):
+		is_accepting = value
+		_refreshVisuals()
 
-func _enter_tree() -> void:
-	if !condition_type_changed.is_connected(_on_type_changed):
-		condition_type_changed.connect(_on_type_changed, ConnectFlags.CONNECT_DEFERRED)
+@onready var _nameLabel: Label = $NameLabel
+@onready var _startLabel: Label = $StartLabel
+@onready var _currentLabel: Label = $CurrentLabel
+@onready var _acceptRing: Node2D = $AcceptRing2D
 
 func _ready() -> void:
 	_on_type_changed(_condition_type, condition_type)
 	_label.text = label_name
+	_refreshVisuals()
 
-func _on_type_changed(_old: CONDITION_TYPE, new: CONDITION_TYPE):
-	self.get_node("DrawCircle2D/DrawCircle2D-Accept").visible = new == CONDITION_TYPE.FINAL
+# labels do not exist until ready, so the setters have to wait their turn like everyone else
+func _refreshVisuals() -> void:
+	if not is_node_ready():
+		return
+	_nameLabel.text = label_name
+	_startLabel.visible = is_start
+	_acceptRing.visible = is_accepting
+
+# shows which state the dfa is sitting in, the others can watch from the sidelines
+func set_current(value: bool) -> void:
+	_currentLabel.visible = value
