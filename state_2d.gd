@@ -26,6 +26,8 @@ var is_accepting := false:
 @onready var _acceptRing: Node2D = $AcceptRing2D
 
 func _ready() -> void:
+	_on_type_changed(_condition_type, condition_type)
+	_label.text = label_name
 	_refreshVisuals()
 
 # labels do not exist until ready, so the setters have to wait their turn like everyone else
