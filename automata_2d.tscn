@@ -1,8 +1,44 @@
-[gd_scene load_steps=3 format=3 uid="uid://csgfh1bg6m5ed"]
+[gd_scene load_steps=4 format=3 uid="uid://csgfh1bg6m5ed"]
 
 [ext_resource type="Script" path="res://automata_2d.gd" id="1_1xosb"]
 [ext_resource type="Resource" uid="uid://cjmtjrbi2a713" path="res://Resources/example_table.tres" id="2_gbhe2"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_help"]
+content_margin_left = 14.0
+content_margin_top = 12.0
+content_margin_right = 14.0
+content_margin_bottom = 12.0
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1, 0.92, 0, 1)
+
 [node name="Automata2D" type="Node2D"]
 script = ExtResource("1_1xosb")
 table = ExtResource("2_gbhe2")
+
+[node name="HelpLayer" type="CanvasLayer" parent="."]
+
+[node name="Help" type="PanelContainer" parent="HelpLayer"]
+offset_left = 16.0
+offset_top = 280.0
+offset_right = 700.0
+offset_bottom = 470.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_help")
+
+[node name="Label" type="Label" parent="HelpLayer/Help"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 18
+text = "How to play
+The circles are states. The example machine is already filled in.
+A second ring means that state accepts.
+
+Point at a circle, then:
+Right-click — accepting on or off
+S — make that circle the start
+F11 — fullscreen
+Esc — quit"

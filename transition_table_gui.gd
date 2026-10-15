@@ -60,6 +60,10 @@ func _add_label(value: String, node_name: String) -> void:
 	label.custom_minimum_size = Vector2(80, 28)
 	label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	label.add_theme_color_override("font_color", Color.WHITE)
+	label.add_theme_color_override("font_outline_color", Color.BLACK)
+	label.add_theme_constant_override("outline_size", 6)
+	label.add_theme_font_size_override("font_size", 20)
 	_grid.add_child(label)
 	if Engine.is_editor_hint():
 		label.owner = get_tree().edited_scene_root
@@ -68,8 +72,16 @@ func _add_line_edit(value: String, node_name: String) -> void:
 	var le := LineEdit.new()
 	le.name = node_name
 	le.text = value
-	le.custom_minimum_size = Vector2(80, 28)
+	le.custom_minimum_size = Vector2(80, 36)
 	le.alignment = HORIZONTAL_ALIGNMENT_CENTER
+	le.add_theme_color_override("font_color", Color.BLACK)
+	le.add_theme_color_override("caret_color", Color.BLACK)
+	le.add_theme_font_size_override("font_size", 20)
+	var field := StyleBoxFlat.new()
+	field.bg_color = Color.WHITE
+	field.content_margin_left = 6
+	field.content_margin_right = 6
+	le.add_theme_stylebox_override("normal", field)
 	_grid.add_child(le)
 	if Engine.is_editor_hint():
 		le.owner = get_tree().edited_scene_root

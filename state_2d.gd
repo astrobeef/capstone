@@ -27,7 +27,7 @@ func _enter_tree() -> void:
 		condition_type_changed.connect(_on_type_changed, ConnectFlags.CONNECT_DEFERRED)
 
 func _ready() -> void:
-	_on_type_changed(CONDITION_TYPE.START, CONDITION_TYPE.INTER)
+	_on_type_changed(_condition_type, condition_type)
 	_label.text = label_name
 
 func _on_type_changed(_old: CONDITION_TYPE, new: CONDITION_TYPE):
