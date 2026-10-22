@@ -1,58 +1,71 @@
-[gd_scene load_steps=3 format=3 uid="uid://cr1v6d2na1rhf"]
+[gd_scene load_steps=3 format=3 uid="uid://gwr12jseb387"]
 
+[ext_resource type="Script" path="res://draw_circle_2d.gd" id="1_vvh76"]
 [ext_resource type="Script" path="res://state_2d.gd" id="1_y8etl"]
-[ext_resource type="PackedScene" uid="uid://ca7ax1wjni78s" path="res://draw_circle_2d.tscn" id="2_uu07u"]
 
 [node name="State2D" type="Node2D"]
 script = ExtResource("1_y8etl")
+is_start = true
+is_accepting = true
 
-[node name="OuterCircle2D" parent="." instance=ExtResource("2_uu07u")]
-position = Vector2(0, 0)
-stroke_width = 6.0
+[node name="InnerRing2D" type="Node2D" parent="."]
+script = ExtResource("1_vvh76")
+radius = 32.0
+stroke_width = 2.0
 
-[node name="AcceptRing2D" parent="." instance=ExtResource("2_uu07u")]
-visible = false
-position = Vector2(0, 0)
-radius = 38.0
+[node name="AcceptRing2D" type="Node2D" parent="."]
+script = ExtResource("1_vvh76")
+radius = 40.0
 stroke_width = 2.0
 fill_color = Color(0, 0, 0, 0)
 
 [node name="NameLabel" type="Label" parent="."]
-offset_left = -20.0
-offset_top = -11.5
-offset_right = 20.0
-offset_bottom = 11.5
+custom_minimum_size = Vector2(64, 64)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(1, 0.92, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 8
-theme_override_font_sizes/font_size = 22
+size_flags_horizontal = 4
 text = "a"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="StartLabel" type="Label" parent="."]
-visible = false
-script = ExtResource("1_ys5ni")
-radius = 44.0
-stroke_width = 6.0
-offset_left = -30.0
-offset_top = -66.0
-offset_right = 30.0
-offset_bottom = -44.0
-theme_override_font_sizes/font_size = 12
-text = "Start"
+[node name="PanelContainer" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(100, 60)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -74.0
+offset_right = 20.0
+offset_bottom = -34.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="StartContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+
+[node name="StartLabel" type="Label" parent="PanelContainer/VBoxContainer/StartContainer"]
+layout_mode = 2
+text = "is start"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CurrentLabel" type="Label" parent="."]
+[node name="CurrentContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+
+[node name="CurrentLabel" type="Label" parent="PanelContainer/VBoxContainer/CurrentContainer"]
 visible = false
-offset_left = -30.0
-offset_top = 44.0
-offset_right = 30.0
-offset_bottom = 66.0
-theme_override_font_sizes/font_size = 12
-text = "Current"
+layout_mode = 2
+text = "is current"
 horizontal_alignment = 1
 vertical_alignment = 1

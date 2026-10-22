@@ -3,32 +3,42 @@ extends Node2D
 class_name State2D
 
 @export
+## Set in automata_2d.gd
 var label_name := "a":
 	set(value):
 		label_name = value
 		_refreshVisuals()
 
 @export
+## Set in automata_2d.gd
 var is_start := false:
 	set(value):
 		is_start = value
 		_refreshVisuals()
 
 @export
+## Set in automata_2d.gd
 var is_accepting := false:
 	set(value):
 		is_accepting = value
 		_refreshVisuals()
 
-@onready var _nameLabel: Label = $NameLabel
-@onready var _startLabel: Label = $StartLabel
-@onready var _currentLabel: Label = $CurrentLabel
-@onready var _acceptRing: Node2D = $AcceptRing2D
+var _nameLabel: Label:
+	get():
+		return get_node_or_null("NameLabel")
+var _startLabel: Label:
+	get():
+		return get_node_or_null("PanelContainer/VBoxContainer/StartContainer/StartLabel")
+var _currentLabel: Label:
+	get():
+		return get_node_or_null("PanelContainer/VBoxContainer/CurrentContainer/CurrentLabel")
+var _acceptRing: DrawCircle2D:
+	get():
+		return get_node_or_null("AcceptRing2D")
 
 func _ready() -> void:
-	_on_type_changed(_condition_type, condition_type)
-	_label.text = label_name
 	_refreshVisuals()
+	set_current(false)
 
 # labels do not exist until ready, so the setters have to wait their turn like everyone else
 func _refreshVisuals() -> void:
