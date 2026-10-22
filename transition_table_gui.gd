@@ -5,6 +5,7 @@ class_name TransitionTableGUI
 const OB_META_PREV_SELECT = "prev_selected"
 const OB_META_INIT_SELECT = "init_selected"
 const OB_META_ORIGIN_STATE = "origin_state"
+const NO_DESTINATION_ID = 1000
 
 @export
 var do_rebuild_table: bool:
@@ -21,7 +22,7 @@ var _grid_parent: Node:
 	get():
 		return $PanelContainer/MarginContainer
 
-signal transition_selected(origin_state: String, selected_index: int, selected_state: String, previous_index: int, previous_state: String)
+signal transition_selected(origin_state: String, new_destination: String, previous_destination: String)
 
 func _ready() -> void:
 	rebuild_table()
@@ -88,7 +89,7 @@ func _add_transition(origin_state: String, dest_state: String, node_name: String
 	ob.add_theme_color_override("font_color", Color.WHITE)
 	ob.add_theme_font_size_override("font_size", 20)
 	for i in range(0, table.states.size()):
-		ob.add_item(table.states[i])
+		ob.add_item(table.states[i], i)
 		if table.states[i] == dest_state:
 			ob.select(i)
 	ob.item_selected.connect(_on_item_selected.bind(ob))
@@ -96,6 +97,7 @@ func _add_transition(origin_state: String, dest_state: String, node_name: String
 	ob.set_meta(OB_META_PREV_SELECT, ob.selected)
 	ob.set_meta(OB_META_INIT_SELECT, ob.selected)
 	ob.set_meta(OB_META_ORIGIN_STATE, origin_state)
+	ob.add_item("", NO_DESTINATION_ID)
 	_grid.add_child(ob)
 	if Engine.is_editor_hint():
 		ob.owner = get_tree().edited_scene_root
@@ -105,5 +107,5 @@ func _on_item_selected(selected_index: int, source: OptionButton):
 	var prev_index := source.get_meta(OB_META_PREV_SELECT) as int
 	var origin_state := source.get_meta(OB_META_ORIGIN_STATE) as String
 	source.set_meta(OB_META_PREV_SELECT, selected_index)
-	print("User selected [%d] (\"%s\") on \"%s\", which had initial index [%d] (\"%s\") and had previous index [%d] (\"%s\")" % [selected_index, source.get_item_text(selected_index), source.name, init_index, source.get_item_text(init_index), prev_index, source.get_item_text(prev_index)])
-	transition_selected.emit(origin_state, selected_index, source.get_item_text(selected_index), prev_index, source.get_item_text(prev_index))
+	print("User selected [id:%d] (\"%s\") on \"%s\", which had initial [id:%d] (\"%s\") and had previous [id:%d] (\"%s\")" % [source.get_item_id(selected_index), source.get_item_text(selected_index), source.name, source.get_item_id(init_index), source.get_item_text(init_index), source.get_item_id(prev_index), source.get_item_text(prev_index)])
+	transition_selected.emit(origin_state, source.get_item_text(selected_index), source.get_item_text(prev_index))
