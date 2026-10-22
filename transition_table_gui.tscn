@@ -28,12 +28,20 @@ columns = 3
 [node name="HeaderState" type="Label" parent="PanelContainer/MarginContainer/GeneratedTable"]
 custom_minimum_size = Vector2(80, 28)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.772549, 0.992157, 1, 1)
+theme_override_colors/font_outline_color = Color(0.027451, 0.0431373, 0.0666667, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 20
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="HeaderInput_0" type="Label" parent="PanelContainer/MarginContainer/GeneratedTable"]
 custom_minimum_size = Vector2(80, 28)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.780392, 1, 0.596078, 1)
+theme_override_colors/font_outline_color = Color(0.0588235, 0.0941176, 0.054902, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 20
 text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -41,63 +49,127 @@ vertical_alignment = 1
 [node name="HeaderInput_1" type="Label" parent="PanelContainer/MarginContainer/GeneratedTable"]
 custom_minimum_size = Vector2(80, 28)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.780392, 1, 0.596078, 1)
+theme_override_colors/font_outline_color = Color(0.0588235, 0.0941176, 0.054902, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 20
 text = "1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="State_0" type="Label" parent="PanelContainer/MarginContainer/GeneratedTable"]
+[node name="HeaderState_0" type="Label" parent="PanelContainer/MarginContainer/GeneratedTable"]
 custom_minimum_size = Vector2(80, 28)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.772549, 0.992157, 1, 1)
+theme_override_colors/font_outline_color = Color(0.027451, 0.0431373, 0.0666667, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 20
 text = "A"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Transition_0_0" type="LineEdit" parent="PanelContainer/MarginContainer/GeneratedTable"]
+[node name="Transition_0_0" type="OptionButton" parent="PanelContainer/MarginContainer/GeneratedTable"]
 custom_minimum_size = Vector2(80, 28)
 layout_mode = 2
-text = "A"
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
 alignment = 1
+selected = 0
+item_count = 3
+popup/item_0/text = "A"
+popup/item_1/text = "B"
+popup/item_1/id = 1
+popup/item_2/text = "C"
+popup/item_2/id = 2
 
-[node name="Transition_0_1" type="LineEdit" parent="PanelContainer/MarginContainer/GeneratedTable"]
+[node name="Transition_0_1" type="OptionButton" parent="PanelContainer/MarginContainer/GeneratedTable"]
 custom_minimum_size = Vector2(80, 28)
 layout_mode = 2
-text = "B"
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
 alignment = 1
+selected = 1
+item_count = 3
+popup/item_0/text = "A"
+popup/item_1/text = "B"
+popup/item_1/id = 1
+popup/item_2/text = "C"
+popup/item_2/id = 2
 
-[node name="State_1" type="Label" parent="PanelContainer/MarginContainer/GeneratedTable"]
+[node name="HeaderState_1" type="Label" parent="PanelContainer/MarginContainer/GeneratedTable"]
 custom_minimum_size = Vector2(80, 28)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.772549, 0.992157, 1, 1)
+theme_override_colors/font_outline_color = Color(0.027451, 0.0431373, 0.0666667, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 20
 text = "B"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Transition_1_0" type="LineEdit" parent="PanelContainer/MarginContainer/GeneratedTable"]
+[node name="Transition_1_0" type="OptionButton" parent="PanelContainer/MarginContainer/GeneratedTable"]
 custom_minimum_size = Vector2(80, 28)
 layout_mode = 2
-text = "C"
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
 alignment = 1
+selected = 2
+item_count = 3
+popup/item_0/text = "A"
+popup/item_1/text = "B"
+popup/item_1/id = 1
+popup/item_2/text = "C"
+popup/item_2/id = 2
 
-[node name="Transition_1_1" type="LineEdit" parent="PanelContainer/MarginContainer/GeneratedTable"]
+[node name="Transition_1_1" type="OptionButton" parent="PanelContainer/MarginContainer/GeneratedTable"]
 custom_minimum_size = Vector2(80, 28)
 layout_mode = 2
-text = "B"
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
 alignment = 1
+selected = 1
+item_count = 3
+popup/item_0/text = "A"
+popup/item_1/text = "B"
+popup/item_1/id = 1
+popup/item_2/text = "C"
+popup/item_2/id = 2
 
-[node name="State_2" type="Label" parent="PanelContainer/MarginContainer/GeneratedTable"]
+[node name="HeaderState_2" type="Label" parent="PanelContainer/MarginContainer/GeneratedTable"]
 custom_minimum_size = Vector2(80, 28)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.772549, 0.992157, 1, 1)
+theme_override_colors/font_outline_color = Color(0.027451, 0.0431373, 0.0666667, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 20
 text = "C"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Transition_2_0" type="LineEdit" parent="PanelContainer/MarginContainer/GeneratedTable"]
+[node name="Transition_2_0" type="OptionButton" parent="PanelContainer/MarginContainer/GeneratedTable"]
 custom_minimum_size = Vector2(80, 28)
 layout_mode = 2
-text = "B"
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
 alignment = 1
+selected = 1
+item_count = 3
+popup/item_0/text = "A"
+popup/item_1/text = "B"
+popup/item_1/id = 1
+popup/item_2/text = "C"
+popup/item_2/id = 2
 
-[node name="Transition_2_1" type="LineEdit" parent="PanelContainer/MarginContainer/GeneratedTable"]
+[node name="Transition_2_1" type="OptionButton" parent="PanelContainer/MarginContainer/GeneratedTable"]
 custom_minimum_size = Vector2(80, 28)
 layout_mode = 2
-text = "B"
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
 alignment = 1
+selected = 1
+item_count = 3
+popup/item_0/text = "A"
+popup/item_1/text = "B"
+popup/item_1/id = 1
+popup/item_2/text = "C"
+popup/item_2/id = 2
