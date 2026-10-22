@@ -44,7 +44,7 @@ var fill_color := Color.BLACK	## Color of the inner circle. Set alpha to 0.0 to 
 var stroke_color := Color.WHITE		## Color of the stroke.
 
 # Godot built-in. Ctrl+Click `_physics_process` to read more.
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if self.is_node_ready():
 		# The `_draw` function requires redraws to draw to the screen upon node changes.
 		queue_redraw()

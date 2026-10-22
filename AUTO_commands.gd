@@ -6,7 +6,7 @@ func _enter_tree() -> void:
 	# Ensure this class can always execute
 	self.process_mode = Node.PROCESS_MODE_ALWAYS
 
-func _input(event: InputEvent) -> void:
+func _input(_event: InputEvent) -> void:
 	_input_fullscreen()
 	_input_exit()
 
