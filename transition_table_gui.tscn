@@ -1,4 +1,7 @@
-[gd_scene format=3 uid="uid://cw41rexforj08"]
+[gd_scene load_steps=3 format=3 uid="uid://cw41rexforj08"]
+
+[ext_resource type="Script" path="res://transition_table_gui.gd" id="1_w2s8j"]
+[ext_resource type="Resource" uid="uid://cjmtjrbi2a713" path="res://Resources/example_table.tres" id="2_4aw4b"]
 
 [node name="TransitionTableGUI" type="PanelContainer"]
 anchors_preset = 8
@@ -12,6 +15,8 @@ offset_right = 124.0
 offset_bottom = 94.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_w2s8j")
+table = ExtResource("2_4aw4b")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
@@ -70,7 +75,7 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 20
 alignment = 1
 selected = 0
-item_count = 5
+item_count = 4
 popup/item_0/text = "A"
 popup/item_1/text = "B"
 popup/item_1/id = 1
@@ -78,10 +83,10 @@ popup/item_2/text = "C"
 popup/item_2/id = 2
 popup/item_3/text = "D"
 popup/item_3/id = 3
-popup/item_4/id = 1000
 metadata/prev_selected = 0
 metadata/init_selected = 0
 metadata/origin_state = "A"
+metadata/input_index = 0
 
 [node name="Transition_0_1" type="OptionButton" parent="MarginContainer/GeneratedTable"]
 custom_minimum_size = Vector2(80, 28)
@@ -90,7 +95,7 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 20
 alignment = 1
 selected = 1
-item_count = 5
+item_count = 4
 popup/item_0/text = "A"
 popup/item_1/text = "B"
 popup/item_1/id = 1
@@ -98,10 +103,10 @@ popup/item_2/text = "C"
 popup/item_2/id = 2
 popup/item_3/text = "D"
 popup/item_3/id = 3
-popup/item_4/id = 1000
 metadata/prev_selected = 1
 metadata/init_selected = 1
 metadata/origin_state = "A"
+metadata/input_index = 1
 
 [node name="HeaderState_1" type="Label" parent="MarginContainer/GeneratedTable"]
 custom_minimum_size = Vector2(80, 28)
@@ -121,7 +126,7 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 20
 alignment = 1
 selected = 2
-item_count = 5
+item_count = 4
 popup/item_0/text = "A"
 popup/item_1/text = "B"
 popup/item_1/id = 1
@@ -129,10 +134,10 @@ popup/item_2/text = "C"
 popup/item_2/id = 2
 popup/item_3/text = "D"
 popup/item_3/id = 3
-popup/item_4/id = 1000
 metadata/prev_selected = 2
 metadata/init_selected = 2
 metadata/origin_state = "B"
+metadata/input_index = 0
 
 [node name="Transition_1_1" type="OptionButton" parent="MarginContainer/GeneratedTable"]
 custom_minimum_size = Vector2(80, 28)
@@ -141,7 +146,7 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 20
 alignment = 1
 selected = 1
-item_count = 5
+item_count = 4
 popup/item_0/text = "A"
 popup/item_1/text = "B"
 popup/item_1/id = 1
@@ -149,10 +154,10 @@ popup/item_2/text = "C"
 popup/item_2/id = 2
 popup/item_3/text = "D"
 popup/item_3/id = 3
-popup/item_4/id = 1000
 metadata/prev_selected = 1
 metadata/init_selected = 1
 metadata/origin_state = "B"
+metadata/input_index = 1
 
 [node name="HeaderState_2" type="Label" parent="MarginContainer/GeneratedTable"]
 custom_minimum_size = Vector2(80, 28)
@@ -172,7 +177,7 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 20
 alignment = 1
 selected = 1
-item_count = 5
+item_count = 4
 popup/item_0/text = "A"
 popup/item_1/text = "B"
 popup/item_1/id = 1
@@ -180,10 +185,10 @@ popup/item_2/text = "C"
 popup/item_2/id = 2
 popup/item_3/text = "D"
 popup/item_3/id = 3
-popup/item_4/id = 1000
 metadata/prev_selected = 1
 metadata/init_selected = 1
 metadata/origin_state = "C"
+metadata/input_index = 0
 
 [node name="Transition_2_1" type="OptionButton" parent="MarginContainer/GeneratedTable"]
 custom_minimum_size = Vector2(80, 28)
@@ -192,7 +197,7 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 20
 alignment = 1
 selected = 1
-item_count = 5
+item_count = 4
 popup/item_0/text = "A"
 popup/item_1/text = "B"
 popup/item_1/id = 1
@@ -200,10 +205,10 @@ popup/item_2/text = "C"
 popup/item_2/id = 2
 popup/item_3/text = "D"
 popup/item_3/id = 3
-popup/item_4/id = 1000
 metadata/prev_selected = 1
 metadata/init_selected = 1
 metadata/origin_state = "C"
+metadata/input_index = 1
 
 [node name="HeaderState_3" type="Label" parent="MarginContainer/GeneratedTable"]
 custom_minimum_size = Vector2(80, 28)
@@ -223,7 +228,7 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 20
 alignment = 1
 selected = 1
-item_count = 5
+item_count = 4
 popup/item_0/text = "A"
 popup/item_1/text = "B"
 popup/item_1/id = 1
@@ -231,10 +236,10 @@ popup/item_2/text = "C"
 popup/item_2/id = 2
 popup/item_3/text = "D"
 popup/item_3/id = 3
-popup/item_4/id = 1000
 metadata/prev_selected = 1
 metadata/init_selected = 1
 metadata/origin_state = "D"
+metadata/input_index = 0
 
 [node name="Transition_3_1" type="OptionButton" parent="MarginContainer/GeneratedTable"]
 custom_minimum_size = Vector2(80, 28)
@@ -243,7 +248,7 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 20
 alignment = 1
 selected = 3
-item_count = 5
+item_count = 4
 popup/item_0/text = "A"
 popup/item_1/text = "B"
 popup/item_1/id = 1
@@ -251,7 +256,7 @@ popup/item_2/text = "C"
 popup/item_2/id = 2
 popup/item_3/text = "D"
 popup/item_3/id = 3
-popup/item_4/id = 1000
 metadata/prev_selected = 3
 metadata/init_selected = 3
 metadata/origin_state = "D"
+metadata/input_index = 1

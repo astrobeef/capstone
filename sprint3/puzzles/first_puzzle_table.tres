@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="TTableRes" load_steps=6 format=3]
+[gd_resource type="Resource" script_class="TTableRes" load_steps=6 format=3 uid="uid://i58j6m6u4uqa"]
 
 [ext_resource type="Script" path="res://transition_row_resource.gd" id="1_row"]
 [ext_resource type="Script" path="res://transition_table_resource.gd" id="2_tbl"]

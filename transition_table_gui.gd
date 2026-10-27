@@ -5,7 +5,7 @@ class_name TransitionTableGUI
 const OB_META_PREV_SELECT = "prev_selected"
 const OB_META_INIT_SELECT = "init_selected"
 const OB_META_ORIGIN_STATE = "origin_state"
-const NO_DESTINATION_ID = 1000
+const OB_META_INPUT_INDEX = "input_index"
 
 @export
 var do_rebuild_table: bool:
@@ -20,9 +20,9 @@ var _grid: GridContainer
 
 var _grid_parent: Node:
 	get():
-		return $PanelContainer/MarginContainer
+		return $MarginContainer
 
-signal transition_selected(origin_state: String, new_destination: String, previous_destination: String)
+signal transition_selected(origin_state: String, input_index: int, new_destination: String, previous_destination: String)
 
 func _ready() -> void:
 	rebuild_table()
@@ -58,7 +58,7 @@ func rebuild_table() -> void:
 			var destination := ""
 			if input_index < state_row.row.size():
 				destination = state_row.row[input_index]
-			_add_transition(state_row.state, destination,"Transition_%d_%d" % [state_index, input_index])
+			_add_transition(state_row.state, destination,"Transition_%d_%d" % [state_index, input_index], input_index)
 
 func _add_header_input(value: String, node_name: String) -> void:
 	_add_label(value, node_name, Color("#c7ff98"), Color("#0f180e"), 6, 20)
@@ -81,7 +81,7 @@ func _add_label(value: String, node_name: String, font_color: Color, font_outlin
 	if Engine.is_editor_hint():
 		label.owner = get_tree().edited_scene_root
 
-func _add_transition(origin_state: String, dest_state: String, node_name: String) -> void:
+func _add_transition(origin_state: String, dest_state: String, node_name: String, input_index: int) -> void:
 	var ob := OptionButton.new()
 	ob.name = node_name
 	ob.custom_minimum_size = Vector2(80, 28)
@@ -97,7 +97,7 @@ func _add_transition(origin_state: String, dest_state: String, node_name: String
 	ob.set_meta(OB_META_PREV_SELECT, ob.selected)
 	ob.set_meta(OB_META_INIT_SELECT, ob.selected)
 	ob.set_meta(OB_META_ORIGIN_STATE, origin_state)
-	ob.add_item("", NO_DESTINATION_ID)
+	ob.set_meta(OB_META_INPUT_INDEX, input_index)
 	_grid.add_child(ob)
 	if Engine.is_editor_hint():
 		ob.owner = get_tree().edited_scene_root
@@ -106,6 +106,7 @@ func _on_item_selected(selected_index: int, source: OptionButton):
 	var init_index := source.get_meta(OB_META_INIT_SELECT) as int
 	var prev_index := source.get_meta(OB_META_PREV_SELECT) as int
 	var origin_state := source.get_meta(OB_META_ORIGIN_STATE) as String
+	var input_index := source.get_meta(OB_META_INPUT_INDEX) as int
 	source.set_meta(OB_META_PREV_SELECT, selected_index)
 	print("User selected [id:%d] (\"%s\") on \"%s\", which had initial [id:%d] (\"%s\") and had previous [id:%d] (\"%s\")" % [source.get_item_id(selected_index), source.get_item_text(selected_index), source.name, source.get_item_id(init_index), source.get_item_text(init_index), source.get_item_id(prev_index), source.get_item_text(prev_index)])
-	transition_selected.emit(origin_state, source.get_item_text(selected_index), source.get_item_text(prev_index))
+	transition_selected.emit(origin_state, input_index, source.get_item_text(selected_index), source.get_item_text(prev_index))
