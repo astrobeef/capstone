@@ -13,11 +13,11 @@ var test_inputs: Array[String]
 @export
 var expected_acceptance: Array[bool]
 
-func _init(source: TTableRes):
+func _init(source: TTableRes = null) -> void:
 	source_table = source
 
 func create_user_table() -> TTableRes:
-	var user_table: TTableRes = source_table.duplicate(true)
+	var user_table: TTableRes = Globals.deep_copy_table(source_table)
 	return user_table
 
 func evaluate(t: TTableRes) -> Array[bool]:

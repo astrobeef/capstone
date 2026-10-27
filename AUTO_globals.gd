@@ -13,3 +13,12 @@ func get_circles_at_mouse() -> Array[DrawCircle2D]:
 		if h["collider"].owner is DrawCircle2D:
 			hit_circles.append(h["collider"].owner)
 	return hit_circles
+
+func deep_copy_table(source: TTableRes) -> TTableRes:
+	var copy := source.duplicate(true) as TTableRes
+	# Must manually duplicate custom resources
+	for i in range(source.rows.size()):
+		var source_row := source.rows[i]
+		if source_row != null:
+			copy.rows[i] = source_row.duplicate(true) as TRowRes
+	return copy
