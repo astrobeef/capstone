@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://gpg1l8h56sno"]
+
+[ext_resource type="PackedScene" uid="uid://csgfh1bg6m5ed" path="res://automata_2d.tscn" id="1_206eg"]
+[ext_resource type="PackedScene" uid="uid://cw41rexforj08" path="res://transition_table_gui.tscn" id="2_atjec"]
+[ext_resource type="PackedScene" uid="uid://8gt4yvedvgm" path="res://sprint3/puzzle_panel.tscn" id="3_363o1"]
+
+[node name="DfaPuzzle" type="Node2D"]
+
+[node name="Automata2D" parent="." instance=ExtResource("1_206eg")]
+position = Vector2(254, 402)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PuzzlePanel" parent="CanvasLayer" instance=ExtResource("3_363o1")]
+z_index = -1
+
+[node name="TransitionTableGUI" parent="CanvasLayer" instance=ExtResource("2_atjec")]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -248.0
+offset_top = -188.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 0
+grow_vertical = 0

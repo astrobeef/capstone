@@ -1,7 +1,7 @@
 extends Node2D
 class_name Automata2D
 
-const STATE_OFFSET = Vector2(300,250)
+const STATE_OFFSET = Vector2(0,0)
 
 const STATE_SCENE = preload("res://state_2d.tscn")
 const TTABLE_SCENE = preload("res://transition_table_gui.tscn")
@@ -13,13 +13,7 @@ var _current_state: String
 
 func _ready() -> void:
 	_create_states()
-	_create_ttable()
 	_reset()
-
-func _create_ttable() -> void:
-	var table_node := TTABLE_SCENE.instantiate() as TransitionTableGUI
-	table_node.table = table
-	add_child(table_node)
 
 func _create_states() -> void:
 	for index in range(table.rows.size()):

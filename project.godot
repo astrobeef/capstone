@@ -19,6 +19,11 @@ config/icon="res://icon.svg"
 
 Commands="*res://AUTO_commands.gd"
 Globals="*res://AUTO_globals.gd"
+Eval="*res://AUTO_evaluation.gd"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/transition_table_editor/plugin.cfg")
 
 [global_group]
 

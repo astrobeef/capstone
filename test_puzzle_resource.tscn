@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://dqafrme4w76u8"]
+
+[ext_resource type="Script" path="res://test_puzzle_resource.gd" id="1_22xt1"]
+[ext_resource type="Resource" uid="uid://cjmtjrbi2a713" path="res://Resources/example_table.tres" id="2_fr0av"]
+
+[node name="Node" type="Node"]
+script = ExtResource("1_22xt1")
+table = ExtResource("2_fr0av")
