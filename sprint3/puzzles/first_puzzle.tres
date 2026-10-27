@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PuzzleRes" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://sprint3/puzzle_resource.gd" id="1_puz"]
+[ext_resource type="Resource" path="res://sprint3/puzzles/first_puzzle_table.tres" id="2_tbl"]
+
+[resource]
+script = ExtResource("1_puz")
+title = "Find the Double 1"
+table = ExtResource("2_tbl")
+test_inputs = Array[String](["11", "011", "110", "", "1", "101", "0101"])
+expected_acceptance = Array[bool]([true, true, true, false, false, false, false])
