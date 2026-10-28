@@ -26,12 +26,12 @@ content_margin_left = 12.0
 content_margin_top = 8.0
 content_margin_right = 12.0
 content_margin_bottom = 8.0
-bg_color = Color(1, 1, 1, 1)
+bg_color = Color(0.82, 0.96, 1, 1)
 border_width_left = 4
 border_width_top = 4
 border_width_right = 4
 border_width_bottom = 4
-border_color = Color(1, 0.92, 0, 1)
+border_color = Color(0, 0.45, 0.85, 1)
 
 [node name="PuzzlePanel" type="PanelContainer"]
 anchors_preset = 15

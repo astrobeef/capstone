@@ -34,9 +34,6 @@ vertical_alignment = 1
 
 [node name="StartLabel" type="Label" parent="."]
 visible = false
-script = ExtResource("1_ys5ni")
-radius = 44.0
-stroke_width = 6.0
 offset_left = -30.0
 offset_top = -66.0
 offset_right = 30.0
