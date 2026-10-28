@@ -79,3 +79,16 @@ Failures: 0
 Failures: 3
 
 **Changes from initial to solution:** B on 1: A → C, and C on 0: A → C (2 destination changes).
+
+## Actual results (Oct 27, 2026, Laney's computer, sprint3/dfa_puzzle.tscn, main at 7385cc3)
+
+| Config | Expected | Actual | Match |
+|---|---|---|---|
+| Initial table | Fails "11", "011", "110"; other four pass; "Requirements not yet met" | Same | Yes |
+| Solution (B on 1 -> C, C on 0 -> C) | All 7 requirements pass; "Puzzle solved" | Same | Yes |
+| Incorrect (B on 1 -> B only, rest initial) | Fails "11", "011", "110"; other four pass | Same | Yes |
+| Restore Puzzle, then Check | Initial destinations return, results clear, check matches initial results | Same | Yes |
+
+Manual traces agree with execution for every string in all three configurations.
+
+Debugger errors during known-solution run: [0 errors]
