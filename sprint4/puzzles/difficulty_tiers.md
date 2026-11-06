@@ -287,5 +287,3 @@ Starting table fails: "101", "0101", "1101", "1011", "10101", "1", "10", "100", 
 - Reviewed by Ryan (content author): [ ] date:
 - Reviewed by Brian (progression): [ ] date:
 - Agreement or requested changes:
-
-Resolved: Brian confirmed four or more states are allowed (Nov 5).
