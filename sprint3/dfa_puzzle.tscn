@@ -1,35 +1,66 @@
-[gd_scene load_steps=6 format=3 uid="uid://gpg1l8h56sno"]
+[gd_scene load_steps=11 format=3 uid="uid://gpg1l8h56sno"]
 
-[ext_resource type="Script" path="res://sprint3/dfa_puzzle.gd" id="1_4y2wv"]
-[ext_resource type="PackedScene" uid="uid://csgfh1bg6m5ed" path="res://automata_2d.tscn" id="1_206eg"]
-[ext_resource type="PackedScene" uid="uid://cw41rexforj08" path="res://transition_table_gui.tscn" id="2_atjec"]
-[ext_resource type="Resource" uid="uid://c2owxp7fyghbg" path="res://sprint3/puzzles/first_puzzle.tres" id="2_f5hd8"]
-[ext_resource type="PackedScene" uid="uid://8gt4yvedvgm" path="res://sprint3/puzzle_panel.tscn" id="3_363o1"]
+[ext_resource type="Script" path="res://sprint3/dfa_puzzle.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://csgfh1bg6m5ed" path="res://automata_2d.tscn" id="2"]
+[ext_resource type="PackedScene" uid="uid://cw41rexforj08" path="res://transition_table_gui.tscn" id="3"]
+[ext_resource type="Resource" uid="uid://c2owxp7fyghbg" path="res://sprint3/puzzles/first_puzzle.tres" id="4"]
+[ext_resource type="PackedScene" uid="uid://8gt4yvedvgm" path="res://sprint3/puzzle_panel.tscn" id="5"]
+[ext_resource type="PackedScene" path="res://sprint4/transition_diagram_2d.tscn" id="6"]
+[ext_resource type="Script" path="res://sprint4/puzzle_progression.gd" id="7"]
+[ext_resource type="Script" path="res://sprint3/puzzle_resource.gd" id="8"]
+[ext_resource type="PackedScene" path="res://sprint4/puzzle_navigation.tscn" id="9"]
+[ext_resource type="PackedScene" path="res://sprint4/puzzle_selection.tscn" id="10"]
 
 [node name="DfaPuzzle" type="Node2D"]
-script = ExtResource("1_4y2wv")
-puzzle = ExtResource("2_f5hd8")
+script = ExtResource("1")
 
-[node name="Automata2D" parent="." instance=ExtResource("1_206eg")]
-position = Vector2(690, 253)
+[node name="PuzzleProgression" type="Node" parent="."]
+script = ExtResource("7")
+puzzles = Array[ExtResource("8")]([ExtResource("4")])
+
+[node name="Automata2D" parent="." instance=ExtResource("2")]
+position = Vector2(760, 305)
+table = null
+
+[node name="TransitionDiagram2D" parent="Automata2D" instance=ExtResource("6")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="PuzzlePanel" parent="CanvasLayer" instance=ExtResource("3_363o1")]
-z_index = -1
+[node name="PanelScroll" type="ScrollContainer" parent="CanvasLayer"]
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 570.0
+offset_bottom = 640.0
+horizontal_scroll_mode = 0
+
+[node name="PuzzlePanel" parent="CanvasLayer/PanelScroll" instance=ExtResource("5")]
+layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -40.0
-offset_top = -40.0
-grow_horizontal = 0
-grow_vertical = 0
-theme_override_constants/margin_right = 30
-theme_override_constants/margin_bottom = 30
+offset_left = 760.0
+offset_top = 545.0
+offset_right = 1040.0
+offset_bottom = 700.0
 
-[node name="TransitionTableGUI" parent="CanvasLayer/MarginContainer" instance=ExtResource("2_atjec")]
+[node name="TransitionTableGUI" parent="CanvasLayer/MarginContainer" instance=ExtResource("3")]
 layout_mode = 2
+table = null
+
+[node name="PuzzleNavigation" parent="CanvasLayer" instance=ExtResource("9")]
+offset_left = 32.0
+offset_top = 660.0
+offset_right = 550.0
+offset_bottom = 705.0
+
+[node name="DiagramLegend" type="Label" parent="CanvasLayer"]
+offset_left = 660.0
+offset_top = 16.0
+offset_right = 1210.0
+offset_bottom = 48.0
+text = "Arrow: input to destination  |  Loop: stay  |  0, 1: either input"
+
+[node name="PuzzleSelection" parent="CanvasLayer" instance=ExtResource("10")]
+visible = false
+grow_horizontal = 2
+grow_vertical = 2

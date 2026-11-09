@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://gwr12jseb387"]
+[gd_scene load_steps=4 format=3 uid="uid://gwr12jseb387"]
 
 [ext_resource type="Script" path="res://draw_circle_2d.gd" id="1_vvh76"]
 [ext_resource type="Script" path="res://state_2d.gd" id="1_y8etl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_status"]
 
 [node name="State2D" type="Node2D"]
 script = ExtResource("1_y8etl")
@@ -21,9 +23,10 @@ fill_color = Color(0, 0, 0, 0)
 
 [node name="NameLabel" type="Label" parent="."]
 custom_minimum_size = Vector2(64, 64)
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = -40.0
+offset_right = 32.0
+offset_bottom = 24.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
@@ -32,40 +35,44 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
-custom_minimum_size = Vector2(100, 60)
+custom_minimum_size = Vector2(50, 0)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -74.0
-offset_right = 20.0
-offset_bottom = -34.0
+offset_left = -25.0
+offset_top = 10.0
+offset_right = 25.0
+offset_bottom = 24.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_status")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
 layout_mode = 2
 size_flags_vertical = 4
 
 [node name="StartContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_status")
 
 [node name="StartLabel" type="Label" parent="PanelContainer/VBoxContainer/StartContainer"]
 layout_mode = 2
-text = "is start"
+theme_override_font_sizes/font_size = 10
+text = "start"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="CurrentContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 25)
+visible = false
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_status")
 
 [node name="CurrentLabel" type="Label" parent="PanelContainer/VBoxContainer/CurrentContainer"]
 visible = false
 layout_mode = 2
-text = "is current"
+theme_override_font_sizes/font_size = 10
+text = "current"
 horizontal_alignment = 1
 vertical_alignment = 1

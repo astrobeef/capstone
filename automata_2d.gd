@@ -12,6 +12,15 @@ var table: TTableRes
 var _current_state: String
 
 func _ready() -> void:
+	if table != null:
+		set_table(table)
+
+func set_table(value: TTableRes) -> void:
+	table = value
+	for child in get_children():
+		if child is State2D:
+			remove_child(child)
+			child.queue_free()
 	_create_states()
 	_reset()
 

@@ -45,9 +45,10 @@ func _refreshVisuals() -> void:
 	if not is_node_ready():
 		return
 	_nameLabel.text = label_name
-	_startLabel.visible = is_start
+	_startLabel.get_parent().visible = is_start
 	_acceptRing.visible = is_accepting
 
 # shows which state the dfa is sitting in, the others can watch from the sidelines
 func set_current(value: bool) -> void:
 	_currentLabel.visible = value
+	_currentLabel.get_parent().visible = value

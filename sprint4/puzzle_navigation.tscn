@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://sprint4/puzzle_navigation.gd" id="1"]
+
+[node name="PuzzleNavigation" type="HBoxContainer"]
+script = ExtResource("1")
+theme_override_constants/separation = 12
+
+[node name="PreviousButton" type="Button" parent="."]
+layout_mode = 2
+text = "Previous"
+
+[node name="NextButton" type="Button" parent="."]
+layout_mode = 2
+text = "Next"
+
+[node name="ReturnButton" type="Button" parent="."]
+layout_mode = 2
+text = "Return to puzzles"

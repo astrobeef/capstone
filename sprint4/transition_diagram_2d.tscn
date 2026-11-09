@@ -1,0 +1,70 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://sprint4/transition_diagram_2d.gd" id="1"]
+[ext_resource type="PackedScene" path="res://transition_2d.tscn" id="2"]
+
+[node name="TransitionDiagram2D" type="Node2D"]
+script = ExtResource("1")
+
+[node name="A_to_A" parent="." instance=ExtResource("2")]
+start_point = Vector2(-39, -22)
+control_point_1 = Vector2(-145, -100)
+control_point_2 = Vector2(-145, 100)
+end_point = Vector2(-39, 22)
+label_position = Vector2(-145, 0)
+
+[node name="A_to_B" parent="." instance=ExtResource("2")]
+start_point = Vector2(31, -31)
+control_point_1 = Vector2(55, -78)
+control_point_2 = Vector2(85, -78)
+end_point = Vector2(109, -31)
+label_position = Vector2(70, -82)
+
+[node name="A_to_C" parent="." instance=ExtResource("2")]
+start_point = Vector2(10, -44)
+control_point_1 = Vector2(15, -300)
+control_point_2 = Vector2(265, -300)
+end_point = Vector2(270, -44)
+label_position = Vector2(140, -253)
+
+[node name="B_to_A" parent="." instance=ExtResource("2")]
+start_point = Vector2(109, 31)
+control_point_1 = Vector2(85, 78)
+control_point_2 = Vector2(55, 78)
+end_point = Vector2(31, 31)
+label_position = Vector2(70, 83)
+
+[node name="B_to_B" parent="." instance=ExtResource("2")]
+start_point = Vector2(120, -40)
+control_point_1 = Vector2(60, -155)
+control_point_2 = Vector2(220, -155)
+end_point = Vector2(160, -40)
+label_position = Vector2(140, -147)
+
+[node name="B_to_C" parent="." instance=ExtResource("2")]
+start_point = Vector2(171, -31)
+control_point_1 = Vector2(195, -78)
+control_point_2 = Vector2(225, -78)
+end_point = Vector2(249, -31)
+label_position = Vector2(210, -82)
+
+[node name="C_to_A" parent="." instance=ExtResource("2")]
+start_point = Vector2(270, 44)
+control_point_1 = Vector2(265, 240)
+control_point_2 = Vector2(15, 240)
+end_point = Vector2(10, 44)
+label_position = Vector2(140, 204)
+
+[node name="C_to_B" parent="." instance=ExtResource("2")]
+start_point = Vector2(249, 31)
+control_point_1 = Vector2(225, 78)
+control_point_2 = Vector2(195, 78)
+end_point = Vector2(171, 31)
+label_position = Vector2(210, 83)
+
+[node name="C_to_C" parent="." instance=ExtResource("2")]
+start_point = Vector2(319, 22)
+control_point_1 = Vector2(425, 100)
+control_point_2 = Vector2(425, -100)
+end_point = Vector2(319, -22)
+label_position = Vector2(425, 0)
