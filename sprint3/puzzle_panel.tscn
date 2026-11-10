@@ -58,7 +58,7 @@ autowrap_mode = 3
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 18
-text = "Choose a destination for each transition. Check Solution tests all listed strings. Change your choices and check again. Restore Puzzle returns transitions to their starting values."
+text = "An arrow goes from a source state to a destination state, and its label is the input that takes it. A loop stays in the same state. A label of 0, 1 means either input takes that arrow. Changing a dropdown updates the diagram. Check Solution tests every listed requirement (a string that should be rejected and is rejected counts as a Pass). Restore Puzzle returns the starting configuration."
 autowrap_mode = 3
 
 [node name="RequirementsLabel" type="Label" parent="Layout"]
