@@ -1,0 +1,38 @@
+# Sprint 4 check
+
+- Scene: sprint3/dfa_puzzle.tscn
+- Branch: sprint4/ryan-ui-and-puzzles
+- Sizes: 1280x720 and 1920x1080, headless, one machine
+
+- RK-T1/RK-T2: 6 risks, 3 high-impact
+- PT-T2: form covers the session notes activities. Approval line is still blank.
+- beginner_01 start: "1" expected Accept actual Accept Pass; "01" expected Accept actual Accept Pass; "11" expected Accept actual Reject Fail; "101" expected Accept actual Reject Fail; (empty) expected Reject actual Reject Pass; "0" expected Reject actual Reject Pass; "10" expected Reject actual Accept Fail; "110" expected Reject actual Reject Pass
+- beginner_01 solved: "1" expected Accept actual Accept Pass; "01" expected Accept actual Accept Pass; "11" expected Accept actual Accept Pass; "101" expected Accept actual Accept Pass; (empty) expected Reject actual Reject Pass; "0" expected Reject actual Reject Pass; "10" expected Reject actual Reject Pass; "110" expected Reject actual Reject Pass
+- beginner_02 start: "1" expected Accept actual Accept Pass; "01" expected Accept actual Accept Pass; "10" expected Accept actual Reject Fail; "010" expected Accept actual Reject Fail; (empty) expected Reject actual Reject Pass; "0" expected Reject actual Reject Pass; "00" expected Reject actual Reject Pass
+- beginner_02 solved: "1" expected Accept actual Accept Pass; "01" expected Accept actual Accept Pass; "10" expected Accept actual Accept Pass; "010" expected Accept actual Accept Pass; (empty) expected Reject actual Reject Pass; "0" expected Reject actual Reject Pass; "00" expected Reject actual Reject Pass
+- intermediate_01 start: "11" expected Accept actual Reject Fail; "011" expected Accept actual Reject Fail; "110" expected Accept actual Reject Fail; (empty) expected Reject actual Reject Pass; "1" expected Reject actual Reject Pass; "101" expected Reject actual Reject Pass; "0101" expected Reject actual Reject Pass
+- intermediate_01 solved: "11" expected Accept actual Accept Pass; "011" expected Accept actual Accept Pass; "110" expected Accept actual Accept Pass; (empty) expected Reject actual Reject Pass; "1" expected Reject actual Reject Pass; "101" expected Reject actual Reject Pass; "0101" expected Reject actual Reject Pass
+- intermediate_02 start: (empty) expected Accept actual Accept Pass; "0" expected Accept actual Accept Pass; "11" expected Accept actual Reject Fail; "101" expected Accept actual Reject Fail; "0110" expected Accept actual Accept Pass; "1" expected Reject actual Reject Pass; "10" expected Reject actual Accept Fail; "111" expected Reject actual Reject Pass; "010" expected Reject actual Accept Fail
+- intermediate_02 solved: (empty) expected Accept actual Accept Pass; "0" expected Accept actual Accept Pass; "11" expected Accept actual Accept Pass; "101" expected Accept actual Accept Pass; "0110" expected Accept actual Accept Pass; "1" expected Reject actual Reject Pass; "10" expected Reject actual Reject Pass; "111" expected Reject actual Reject Pass; "010" expected Reject actual Reject Pass
+- advanced_01 start: (empty) expected Accept actual Accept Pass; "00" expected Accept actual Accept Pass; "11" expected Accept actual Reject Fail; "0101" expected Accept actual Reject Fail; "0110" expected Accept actual Reject Fail; "1001" expected Accept actual Reject Fail; "001100" expected Accept actual Reject Fail; "0" expected Reject actual Accept Fail; "1" expected Reject actual Reject Pass; "01" expected Reject actual Reject Pass; "10" expected Reject actual Accept Fail; "001" expected Reject actual Reject Pass; "0111" expected Reject actual Accept Fail; "000" expected Reject actual Accept Fail
+- advanced_01 solved: (empty) expected Accept actual Accept Pass; "00" expected Accept actual Accept Pass; "11" expected Accept actual Accept Pass; "0101" expected Accept actual Accept Pass; "0110" expected Accept actual Accept Pass; "1001" expected Accept actual Accept Pass; "001100" expected Accept actual Accept Pass; "0" expected Reject actual Reject Pass; "1" expected Reject actual Reject Pass; "01" expected Reject actual Reject Pass; "10" expected Reject actual Reject Pass; "001" expected Reject actual Reject Pass; "0111" expected Reject actual Reject Pass; "000" expected Reject actual Reject Pass
+- advanced_02 start: "101" expected Accept actual Reject Fail; "0101" expected Accept actual Reject Fail; "1101" expected Accept actual Reject Fail; "1011" expected Accept actual Reject Fail; "10101" expected Accept actual Reject Fail; (empty) expected Reject actual Reject Pass; "1" expected Reject actual Accept Fail; "10" expected Reject actual Accept Fail; "100" expected Reject actual Accept Fail; "1001" expected Reject actual Reject Pass; "0110" expected Reject actual Accept Fail; "110" expected Reject actual Accept Fail
+- advanced_02 solved: "101" expected Accept actual Accept Pass; "0101" expected Accept actual Accept Pass; "1101" expected Accept actual Accept Pass; "1011" expected Accept actual Accept Pass; "10101" expected Accept actual Accept Pass; (empty) expected Reject actual Reject Pass; "1" expected Reject actual Reject Pass; "10" expected Reject actual Reject Pass; "100" expected Reject actual Reject Pass; "1001" expected Reject actual Reject Pass; "0110" expected Reject actual Reject Pass; "110" expected Reject actual Reject Pass
+- UI-T1 beginner_01 CanvasLayer/PanelScroll [P: (16, 16), S: (554, 624)]
+- UI-T1 beginner_01 CanvasLayer/MarginContainer [P: (700, 470), S: (320, 230)]
+- UI-T1 beginner_01 CanvasLayer/PuzzleNavigation [P: (32, 660), S: (518, 45)]
+- UI-T1 beginner_01 CanvasLayer/DiagramLegend [P: (660, 16), S: (550, 32)]
+- UI-T4 beginner_01 CanvasLayer/PanelScroll [P: (16, 16), S: (554, 624)]
+- UI-T4 beginner_01 CanvasLayer/MarginContainer [P: (700, 470), S: (320, 230)]
+- UI-T4 beginner_01 CanvasLayer/PuzzleNavigation [P: (32, 660), S: (518, 45)]
+- UI-T4 beginner_01 CanvasLayer/DiagramLegend [P: (660, 16), S: (550, 32)]
+- UI-T1 advanced CanvasLayer/PanelScroll [P: (16, 16), S: (554, 624)]
+- UI-T1 advanced CanvasLayer/MarginContainer [P: (700, 470), S: (320, 230)]
+- UI-T1 advanced CanvasLayer/PuzzleNavigation [P: (32, 660), S: (518, 45)]
+- UI-T1 advanced CanvasLayer/DiagramLegend [P: (660, 16), S: (550, 32)]
+- UI-T4 advanced CanvasLayer/PanelScroll [P: (16, 16), S: (554, 624)]
+- UI-T4 advanced CanvasLayer/MarginContainer [P: (700, 470), S: (320, 230)]
+- UI-T4 advanced CanvasLayer/PuzzleNavigation [P: (32, 660), S: (518, 45)]
+- UI-T4 advanced CanvasLayer/DiagramLegend [P: (660, 16), S: (550, 32)]
+- UI-T3: solved Ends in 1, edited At least one 1, left, and the edit was still there. Last puzzle disables Next. Return opens the puzzle list.
+- Result: passed

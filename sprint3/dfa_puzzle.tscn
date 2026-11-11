@@ -1,25 +1,30 @@
-[gd_scene load_steps=11 format=3 uid="uid://gpg1l8h56sno"]
+[gd_scene load_steps=16 format=3 uid="uid://gpg1l8h56sno"]
 
 [ext_resource type="Script" path="res://sprint3/dfa_puzzle.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://csgfh1bg6m5ed" path="res://automata_2d.tscn" id="2"]
 [ext_resource type="PackedScene" uid="uid://cw41rexforj08" path="res://transition_table_gui.tscn" id="3"]
-[ext_resource type="Resource" uid="uid://c2owxp7fyghbg" path="res://sprint3/puzzles/first_puzzle.tres" id="4"]
 [ext_resource type="PackedScene" uid="uid://8gt4yvedvgm" path="res://sprint3/puzzle_panel.tscn" id="5"]
 [ext_resource type="PackedScene" path="res://sprint4/transition_diagram_2d.tscn" id="6"]
 [ext_resource type="Script" path="res://sprint4/puzzle_progression.gd" id="7"]
 [ext_resource type="Script" path="res://sprint3/puzzle_resource.gd" id="8"]
 [ext_resource type="PackedScene" path="res://sprint4/puzzle_navigation.tscn" id="9"]
 [ext_resource type="PackedScene" path="res://sprint4/puzzle_selection.tscn" id="10"]
+[ext_resource type="Resource" path="res://sprint4/puzzles/beginner_01.tres" id="11"]
+[ext_resource type="Resource" path="res://sprint4/puzzles/beginner_02.tres" id="12"]
+[ext_resource type="Resource" path="res://sprint4/puzzles/intermediate_01.tres" id="13"]
+[ext_resource type="Resource" path="res://sprint4/puzzles/intermediate_02.tres" id="14"]
+[ext_resource type="Resource" path="res://sprint4/puzzles/advanced_01.tres" id="15"]
+[ext_resource type="Resource" path="res://sprint4/puzzles/advanced_02.tres" id="16"]
 
 [node name="DfaPuzzle" type="Node2D"]
 script = ExtResource("1")
 
 [node name="PuzzleProgression" type="Node" parent="."]
 script = ExtResource("7")
-puzzles = Array[ExtResource("8")]([ExtResource("4")])
+puzzles = Array[ExtResource("8")]([ExtResource("11"), ExtResource("12"), ExtResource("13"), ExtResource("14"), ExtResource("15"), ExtResource("16")])
 
 [node name="Automata2D" parent="." instance=ExtResource("2")]
-position = Vector2(760, 305)
+position = Vector2(540, 305)
 table = null
 
 [node name="TransitionDiagram2D" parent="Automata2D" instance=ExtResource("6")]
@@ -38,9 +43,9 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
-offset_left = 760.0
-offset_top = 545.0
-offset_right = 1040.0
+offset_left = 700.0
+offset_top = 470.0
+offset_right = 1020.0
 offset_bottom = 700.0
 
 [node name="TransitionTableGUI" parent="CanvasLayer/MarginContainer" instance=ExtResource("3")]
