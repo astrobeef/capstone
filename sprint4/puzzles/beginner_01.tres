@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PuzzleRes" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://sprint3/puzzle_resource.gd" id="1_puz"]
+[ext_resource type="Resource" path="res://sprint4/puzzles/beginner_01_table.tres" id="2_tbl"]
+
+[resource]
+script = ExtResource("1_puz")
+title = "Ends in 1"
+source_table = ExtResource("2_tbl")
+test_inputs = Array[String](["1", "01", "11", "101", "", "0", "10", "110"])
+expected_acceptance = Array[bool]([true, true, true, true, false, false, false, false])

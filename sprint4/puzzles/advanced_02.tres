@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PuzzleRes" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://sprint3/puzzle_resource.gd" id="1_puz"]
+[ext_resource type="Resource" path="res://sprint4/puzzles/advanced_02_table.tres" id="2_tbl"]
+
+[resource]
+script = ExtResource("1_puz")
+title = "Contains 101"
+source_table = ExtResource("2_tbl")
+test_inputs = Array[String](["101", "0101", "1101", "1011", "10101", "", "1", "10", "100", "1001", "0110", "110"])
+expected_acceptance = Array[bool]([true, true, true, true, true, false, false, false, false, false, false, false])

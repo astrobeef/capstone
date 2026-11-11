@@ -30,6 +30,8 @@ Notation: the start state is always A, inputs are 0 and 1, and a requirement is 
 
 The sequence has two Beginner puzzles (P1, P2), two Intermediate (P3, P4), and one Advanced (P5), so the three later puzzles span both later tiers. P5 builds on P4: one parity becomes two. An optional stretch puzzle ("Contains 101") is included at the end in case the team wants a second Advanced puzzle.
 
+Files, in that order: `beginner_01.tres`, `beginner_02.tres`, `intermediate_01.tres`, `intermediate_02.tres`, `advanced_01.tres`, `advanced_02.tres`. The same tables are copied in `solutions.md`.
+
 ## P1 Ends in 1 (Beginner)
 
 **Rule:** Accept every string that ends in 1.
