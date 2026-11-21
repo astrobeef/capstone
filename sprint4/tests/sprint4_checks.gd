@@ -70,6 +70,8 @@ func _check_resources() -> void:
 				break
 
 func _check_scene() -> void:
+	# Avoid a leftover playtest save changing unlock/resume behavior.
+	DirAccess.remove_absolute(ProjectSettings.globalize_path(PuzzleProgression.SAVE_PATH))
 	var scene := (load("res://sprint3/dfa_puzzle.tscn") as PackedScene).instantiate()
 	add_child(scene)
 	for _i in 4:
@@ -83,8 +85,11 @@ func _check_scene() -> void:
 		var expected := load(PUZZLE_PATHS[i]) as PuzzleRes
 		if progression.puzzles[i].title != expected.title:
 			_fail("scene puzzle %d is '%s', expected '%s'" % [i, progression.puzzles[i].title, expected.title])
-	var previous := scene.get_node("CanvasLayer/PuzzleNavigation/PreviousButton") as Button
-	var next := scene.get_node("CanvasLayer/PuzzleNavigation/NextButton") as Button
+	# Fresh launches open the puzzle list; enter the first puzzle for interaction checks.
+	progression.select_puzzle(0)
+	await get_tree().process_frame
+	var previous := scene.get_node("CanvasLayer/UIRoot/Margin/Columns/LeftColumn/PuzzleNavigation/PreviousButton") as Button
+	var next := scene.get_node("CanvasLayer/UIRoot/Margin/Columns/LeftColumn/PuzzleNavigation/NextButton") as Button
 	if not previous.disabled or not next.disabled:
 		_fail("first puzzle should disable Previous and Next until solved")
 	# Solve the first puzzle via the table UI, confirm Next unlocks, and that an edit survives a round-trip.
@@ -92,8 +97,8 @@ func _check_scene() -> void:
 		_fail("could not enter Ends in 1 solution")
 		scene.queue_free()
 		return
-	scene.get_node("CanvasLayer/PanelScroll/PuzzlePanel/Layout/Buttons/CheckButton").pressed.emit()
-	if scene.get_node("CanvasLayer/PanelScroll/PuzzlePanel/Layout/SummaryLabel").text != "Puzzle solved" or next.disabled:
+	scene.get_node("CanvasLayer/UIRoot/Margin/Columns/LeftColumn/PanelScroll/PuzzlePanel/Layout/Buttons/CheckButton").pressed.emit()
+	if scene.get_node("CanvasLayer/UIRoot/Margin/Columns/LeftColumn/PanelScroll/PuzzlePanel/Layout/SummaryLabel").text != "Puzzle solved" or next.disabled:
 		_fail("solving Ends in 1 did not unlock Next")
 	next.pressed.emit()
 	await get_tree().process_frame
@@ -107,7 +112,7 @@ func _check_scene() -> void:
 	await get_tree().process_frame
 	if _read_transition(scene, "A", 0) != "B":
 		_fail("revisited puzzle lost the edit")
-	scene.get_node("CanvasLayer/PuzzleNavigation/ReturnButton").pressed.emit()
+	scene.get_node("CanvasLayer/UIRoot/Margin/Columns/LeftColumn/PuzzleNavigation/ReturnButton").pressed.emit()
 	await get_tree().process_frame
 	var selection := scene.get_node("CanvasLayer/PuzzleSelection") as Control
 	if not selection.visible:
@@ -149,7 +154,7 @@ func _read_transition(scene: Node, origin: String, input_index: int) -> String:
 	return button.get_item_text(button.selected)
 
 func _transition_button(scene: Node, origin: String, input_index: int) -> OptionButton:
-	var grid := scene.get_node_or_null("CanvasLayer/MarginContainer/TransitionTableGUI/MarginContainer/GeneratedTable")
+	var grid := scene.get_node_or_null("CanvasLayer/UIRoot/Margin/Columns/RightColumn/TableSlot/TransitionTableGUI/MarginContainer/GeneratedTable")
 	if grid == null:
 		return null
 	for child in grid.get_children():

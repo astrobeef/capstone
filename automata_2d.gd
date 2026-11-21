@@ -4,7 +4,6 @@ class_name Automata2D
 const STATE_OFFSET = Vector2(0,0)
 
 const STATE_SCENE = preload("res://state_2d.tscn")
-const TTABLE_SCENE = preload("res://transition_table_gui.tscn")
 
 @export
 var table: TTableRes

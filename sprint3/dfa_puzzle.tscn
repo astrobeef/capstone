@@ -31,41 +31,81 @@ table = null
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="PanelScroll" type="ScrollContainer" parent="CanvasLayer"]
-offset_left = 16.0
-offset_top = 16.0
-offset_right = 570.0
-offset_bottom = 640.0
-horizontal_scroll_mode = 0
+[node name="UIRoot" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
-[node name="PuzzlePanel" parent="CanvasLayer/PanelScroll" instance=ExtResource("5")]
+[node name="Margin" type="MarginContainer" parent="CanvasLayer/UIRoot"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="Columns" type="HBoxContainer" parent="CanvasLayer/UIRoot/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="LeftColumn" type="VBoxContainer" parent="CanvasLayer/UIRoot/Margin/Columns"]
+custom_minimum_size = Vector2(320, 0)
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.85
+theme_override_constants/separation = 12
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
-offset_left = 700.0
-offset_top = 470.0
-offset_right = 1020.0
-offset_bottom = 700.0
-
-[node name="TransitionTableGUI" parent="CanvasLayer/MarginContainer" instance=ExtResource("3")]
+[node name="PanelScroll" type="ScrollContainer" parent="CanvasLayer/UIRoot/Margin/Columns/LeftColumn"]
 layout_mode = 2
-table = null
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
 
-[node name="PuzzleNavigation" parent="CanvasLayer" instance=ExtResource("9")]
-offset_left = 32.0
-offset_top = 660.0
-offset_right = 550.0
-offset_bottom = 705.0
+[node name="PuzzlePanel" parent="CanvasLayer/UIRoot/Margin/Columns/LeftColumn/PanelScroll" instance=ExtResource("5")]
+custom_minimum_size = Vector2(280, 0)
+layout_mode = 2
+size_flags_vertical = 0
 
-[node name="DiagramLegend" type="Label" parent="CanvasLayer"]
-offset_left = 660.0
-offset_top = 16.0
-offset_right = 1210.0
-offset_bottom = 48.0
+[node name="PuzzleNavigation" parent="CanvasLayer/UIRoot/Margin/Columns/LeftColumn" instance=ExtResource("9")]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="RightColumn" type="VBoxContainer" parent="CanvasLayer/UIRoot/Margin/Columns"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.15
+theme_override_constants/separation = 12
+
+[node name="DiagramLegend" type="Label" parent="CanvasLayer/UIRoot/Margin/Columns/RightColumn"]
+layout_mode = 2
+size_flags_vertical = 0
 text = "Arrow: input to destination  |  Loop: stay  |  0, 1: either input"
+autowrap_mode = 3
+
+[node name="DiagramHost" type="Control" parent="CanvasLayer/UIRoot/Margin/Columns/RightColumn"]
+custom_minimum_size = Vector2(280, 160)
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="TableSlot" type="MarginContainer" parent="CanvasLayer/UIRoot/Margin/Columns/RightColumn"]
+custom_minimum_size = Vector2(260, 180)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+
+[node name="TransitionTableGUI" parent="CanvasLayer/UIRoot/Margin/Columns/RightColumn/TableSlot" instance=ExtResource("3")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+table = null
 
 [node name="PuzzleSelection" parent="CanvasLayer" instance=ExtResource("10")]
 visible = false
-grow_horizontal = 2
-grow_vertical = 2
