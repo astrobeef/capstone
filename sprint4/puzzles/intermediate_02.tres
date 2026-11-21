@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PuzzleRes" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://sprint3/puzzle_resource.gd" id="1_puz"]
+[ext_resource type="Resource" path="res://sprint4/puzzles/intermediate_02_table.tres" id="2_tbl"]
+
+[resource]
+script = ExtResource("1_puz")
+title = "Even number of 1s"
+source_table = ExtResource("2_tbl")
+test_inputs = Array[String](["", "0", "11", "101", "0110", "1", "10", "111", "010"])
+expected_acceptance = Array[bool]([true, true, true, true, true, false, false, false, false])

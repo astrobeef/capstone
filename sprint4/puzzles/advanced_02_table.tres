@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="TTableRes" load_steps=7 format=3]
+
+[ext_resource type="Script" path="res://transition_row_resource.gd" id="1_row"]
+[ext_resource type="Script" path="res://transition_table_resource.gd" id="2_tbl"]
+
+[sub_resource type="Resource" id="Resource_rowA"]
+script = ExtResource("1_row")
+state = "A"
+row = Array[String](["B", "D"])
+
+[sub_resource type="Resource" id="Resource_rowB"]
+script = ExtResource("1_row")
+state = "B"
+row = Array[String](["D", "B"])
+
+[sub_resource type="Resource" id="Resource_rowC"]
+script = ExtResource("1_row")
+state = "C"
+row = Array[String](["A", "D"])
+
+[sub_resource type="Resource" id="Resource_rowD"]
+script = ExtResource("1_row")
+state = "D"
+row = Array[String](["D", "B"])
+
+[resource]
+script = ExtResource("2_tbl")
+start_state = "A"
+accepting_states = Array[String](["D"])
+inputs = Array[String](["0", "1"])
+rows = Array[ExtResource("1_row")]([SubResource("Resource_rowA"), SubResource("Resource_rowB"), SubResource("Resource_rowC"), SubResource("Resource_rowD")])

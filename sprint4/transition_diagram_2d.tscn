@@ -68,3 +68,52 @@ control_point_1 = Vector2(425, 100)
 control_point_2 = Vector2(425, -100)
 end_point = Vector2(319, -22)
 label_position = Vector2(425, 0)
+
+[node name="A_to_D" parent="." instance=ExtResource("2")]
+start_point = Vector2(10, -44)
+control_point_1 = Vector2(20, -360)
+control_point_2 = Vector2(400, -360)
+end_point = Vector2(410, -44)
+label_position = Vector2(210, -310)
+
+[node name="B_to_D" parent="." instance=ExtResource("2")]
+start_point = Vector2(150, -44)
+control_point_1 = Vector2(170, -220)
+control_point_2 = Vector2(390, -220)
+end_point = Vector2(410, -44)
+label_position = Vector2(280, -190)
+
+[node name="C_to_D" parent="." instance=ExtResource("2")]
+start_point = Vector2(311, -31)
+control_point_1 = Vector2(335, -78)
+control_point_2 = Vector2(365, -78)
+end_point = Vector2(389, -31)
+label_position = Vector2(350, -82)
+
+[node name="D_to_A" parent="." instance=ExtResource("2")]
+start_point = Vector2(410, 44)
+control_point_1 = Vector2(400, 280)
+control_point_2 = Vector2(20, 280)
+end_point = Vector2(10, 44)
+label_position = Vector2(210, 250)
+
+[node name="D_to_B" parent="." instance=ExtResource("2")]
+start_point = Vector2(410, 44)
+control_point_1 = Vector2(390, 200)
+control_point_2 = Vector2(170, 200)
+end_point = Vector2(150, 44)
+label_position = Vector2(280, 180)
+
+[node name="D_to_C" parent="." instance=ExtResource("2")]
+start_point = Vector2(389, 31)
+control_point_1 = Vector2(365, 78)
+control_point_2 = Vector2(335, 78)
+end_point = Vector2(311, 31)
+label_position = Vector2(350, 83)
+
+[node name="D_to_D" parent="." instance=ExtResource("2")]
+start_point = Vector2(459, 22)
+control_point_1 = Vector2(565, 100)
+control_point_2 = Vector2(565, -100)
+end_point = Vector2(459, -22)
+label_position = Vector2(565, 0)
