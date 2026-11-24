@@ -6,10 +6,18 @@ extends Node
 const PUZZLE_PATHS: PackedStringArray = [
 	"res://sprint4/puzzles/beginner_01.tres",
 	"res://sprint4/puzzles/beginner_02.tres",
+	"res://sprint3/puzzles/first_puzzle.tres",
 	"res://sprint4/puzzles/intermediate_01.tres",
 	"res://sprint4/puzzles/intermediate_02.tres",
 	"res://sprint4/puzzles/advanced_01.tres",
 	"res://sprint4/puzzles/advanced_02.tres",
+]
+
+# Sprint 5 sequence loaded by the running scene. The later tier files stay on disk.
+const SCENE_PATHS: PackedStringArray = [
+	"res://sprint4/puzzles/beginner_01.tres",
+	"res://sprint4/puzzles/beginner_02.tres",
+	"res://sprint3/puzzles/first_puzzle.tres",
 ]
 
 # Correct destinations per state, as [on0, on1]. Matches difficulty_tiers.md.
@@ -77,12 +85,12 @@ func _check_scene() -> void:
 	for _i in 4:
 		await get_tree().process_frame
 	var progression = scene.get_node("PuzzleProgression")
-	if progression.puzzles.size() != PUZZLE_PATHS.size():
-		_fail("scene has %d puzzles, expected %d" % [progression.puzzles.size(), PUZZLE_PATHS.size()])
+	if progression.puzzles.size() != SCENE_PATHS.size():
+		_fail("scene has %d puzzles, expected %d" % [progression.puzzles.size(), SCENE_PATHS.size()])
 		scene.queue_free()
 		return
-	for i in PUZZLE_PATHS.size():
-		var expected := load(PUZZLE_PATHS[i]) as PuzzleRes
+	for i in SCENE_PATHS.size():
+		var expected := load(SCENE_PATHS[i]) as PuzzleRes
 		if progression.puzzles[i].title != expected.title:
 			_fail("scene puzzle %d is '%s', expected '%s'" % [i, progression.puzzles[i].title, expected.title])
 	# Fresh launches open the puzzle list; enter the first puzzle for interaction checks.
