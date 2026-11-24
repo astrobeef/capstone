@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://gpg1l8h56sno"]
+[gd_scene load_steps=17 format=3 uid="uid://gpg1l8h56sno"]
 
 [ext_resource type="Script" path="res://sprint3/dfa_puzzle.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://csgfh1bg6m5ed" path="res://automata_2d.tscn" id="2"]
@@ -15,6 +15,7 @@
 [ext_resource type="Resource" path="res://sprint4/puzzles/intermediate_02.tres" id="14"]
 [ext_resource type="Resource" path="res://sprint4/puzzles/advanced_01.tres" id="15"]
 [ext_resource type="Resource" path="res://sprint4/puzzles/advanced_02.tres" id="16"]
+[ext_resource type="PackedScene" path="res://sprint5/trace_panel.tscn" id="17"]
 
 [node name="DfaPuzzle" type="Node2D"]
 script = ExtResource("1")
@@ -94,6 +95,10 @@ custom_minimum_size = Vector2(280, 160)
 layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 2
+
+[node name="TracePanel" parent="CanvasLayer/UIRoot/Margin/Columns/RightColumn" instance=ExtResource("17")]
+layout_mode = 2
+size_flags_vertical = 0
 
 [node name="TableSlot" type="MarginContainer" parent="CanvasLayer/UIRoot/Margin/Columns/RightColumn"]
 custom_minimum_size = Vector2(260, 180)

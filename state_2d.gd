@@ -35,6 +35,12 @@ var _currentLabel: Label:
 var _acceptRing: DrawCircle2D:
 	get():
 		return get_node_or_null("AcceptRing2D")
+var _innerRing: DrawCircle2D:
+	get():
+		return get_node_or_null("InnerRing2D")
+
+const CURRENT_COLOR := Color.YELLOW
+const DEFAULT_COLOR := Color.WHITE
 
 func _ready() -> void:
 	_refreshVisuals()
@@ -49,6 +55,8 @@ func _refreshVisuals() -> void:
 	_acceptRing.visible = is_accepting
 
 # shows which state the dfa is sitting in, the others can watch from the sidelines
+# the inner ring turns yellow and the "current" label shows, so it never relies on color alone
 func set_current(value: bool) -> void:
 	_currentLabel.visible = value
 	_currentLabel.get_parent().visible = value
+	_innerRing.stroke_color = CURRENT_COLOR if value else DEFAULT_COLOR
