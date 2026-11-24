@@ -66,3 +66,4 @@ func _on_begin_pressed() -> void:
 		return
 	var chosen: String = _input_selector.get_item_metadata(_input_selector.selected)
 	begin_requested.emit(chosen)
+

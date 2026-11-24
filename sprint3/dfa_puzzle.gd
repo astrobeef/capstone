@@ -39,6 +39,10 @@ var _diagram_host: Control:
 	get():
 		return get_node_or_null("./CanvasLayer/UIRoot/Margin/Columns/RightColumn/DiagramHost")
 
+var _trace_panel: TracePanel:
+	get():
+		return get_node_or_null("./CanvasLayer/UIRoot/Margin/Columns/RightColumn/TracePanel")
+
 func _ready() -> void:
 	_table_view.transition_selected.connect(_on_transition_selected)
 	_puzzle_panel.check_requested.connect(_on_check_requested)
@@ -49,6 +53,10 @@ func _ready() -> void:
 	_navigation.previous_requested.connect(func(): _progression.select_puzzle(_progression.current_puzzle_index - 1))
 	_navigation.next_requested.connect(func(): _progression.select_puzzle(_progression.current_puzzle_index + 1))
 	_navigation.return_requested.connect(_show_selection)
+	_trace_panel.begin_requested.connect(_automata.begin_trace)
+	_trace_panel.step_requested.connect(_automata.advance_trace)
+	_trace_panel.reset_requested.connect(_clear_trace)
+	_automata.trace_changed.connect(_trace_panel.show_trace)
 	get_viewport().size_changed.connect(_place_diagram)
 	_diagram_host.resized.connect(_place_diagram)
 	# Resume a prior session; otherwise open the puzzle list (the existing hub).
@@ -67,6 +75,7 @@ func _on_puzzle_selected(selected_puzzle: PuzzleRes, table: TTableRes) -> void:
 	_table_view.rebuild_table()
 	_diagram.refresh_from_table(_user_table)
 	_puzzle_panel.configure_puzzle(puzzle.title, _requirements_text())
+	_trace_panel.configure_inputs(puzzle.test_inputs)
 	_set_puzzle_visible(true)
 	_refresh_navigation()
 	await get_tree().process_frame
@@ -79,6 +88,7 @@ func _on_transition_selected(origin_state: String, input_index: int, new_destina
 			break
 	_diagram.refresh_from_table(_user_table)
 	_puzzle_panel.clear_results()
+	_clear_trace()
 	_progression.save_progress()
 
 func _on_check_requested() -> void:
@@ -103,6 +113,7 @@ func _refresh_navigation() -> void:
 	_selection.refresh(_progression)
 
 func _show_selection() -> void:
+	_clear_trace()
 	_selection.refresh(_progression)
 	_set_puzzle_visible(false)
 
@@ -139,3 +150,7 @@ func _input_text(input_string: String) -> String:
 	if input_string.is_empty():
 		return "(empty)"
 	return '"%s"' % input_string
+
+func _clear_trace() -> void:
+	_automata.clear_trace()
+	_trace_panel.clear_trace()

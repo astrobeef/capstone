@@ -8,13 +8,19 @@ const STATE_SCENE = preload("res://state_2d.tscn")
 @export
 var table: TTableRes
 
+signal trace_changed(current_state: String, consumed: int, total: int, finished: bool, accepted: bool)
+
 var _current_state: String
+var _trace_input := ""
+var _trace_index := 0
+var _trace_active := false
 
 func _ready() -> void:
 	if table != null:
 		set_table(table)
 
 func set_table(value: TTableRes) -> void:
+	clear_trace()
 	table = value
 	for child in get_children():
 		if child is State2D:
@@ -43,3 +49,35 @@ func step(input: String) -> void:
 		if state_row.state == _current_state:
 			_current_state = state_row.row[input_index]
 			return
+
+func begin_trace(input_string: String) -> void:
+	_trace_input = input_string
+	_trace_index = 0
+	_trace_active = true
+	_reset()
+	_update_current_visuals()
+	_emit_trace_changed()
+
+func advance_trace() -> void:
+	if not _trace_active or _trace_index == _trace_input.length():
+		return
+	step(_trace_input[_trace_index])
+	_trace_index += 1
+	_update_current_visuals()
+	_emit_trace_changed()
+
+func clear_trace() -> void:
+	_trace_active = false
+	_trace_input = ""
+	_trace_index = 0
+	_update_current_visuals()
+
+func _update_current_visuals() -> void:
+	for child in get_children():
+		if child is State2D:
+			child.set_current(_trace_active and child.label_name == _current_state)
+
+func _emit_trace_changed() -> void:
+	var finished := _trace_index == _trace_input.length()
+	var accepted := finished and _current_state in table.accepting_states
+	trace_changed.emit(_current_state, _trace_index, _trace_input.length(), finished, accepted)
